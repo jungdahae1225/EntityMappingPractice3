@@ -1,5 +1,7 @@
 package jpashop;
 
+import jpashop.domain.Book;
+
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
@@ -14,12 +16,19 @@ public class JpaMain {
         EntityManager entityManager = entityManagerFactory.createEntityManager();
         //code
 
-        /**==jpa을 통한 모든 작업은 꼭 트랜젝션 단위로 해당 트랜젝션 안에서 작업해야 하기 때문에 작업을 하나의 트랜젝션으로 감싸주어야 한다.
+        /**==jpa을 통한 모든 작업은 꼭 트랜젝션 단위로 해당 트랜젝션 안에서 작업해야 하기 때문에 작업을 하나의 트랜 젝션으로 감싸주어야 한다.
          * 즉, JPA의 모든 데이터 변경은 트랜젝션 안에서 실행해야한다.==**/
         EntityTransaction transaction = entityManager.getTransaction();
         transaction.begin(); //트랜젝션 시작
 
         try {
+
+            Book book = new Book();
+            book.setName("JPA");
+            book.setAuthor("김영한");
+
+            entityManager.persist(book);
+
             transaction.commit();
         }catch (Exception e){
             //문제가 발생 하면 catch문에서 예외처리로 트랜젝션 롤백해주기.

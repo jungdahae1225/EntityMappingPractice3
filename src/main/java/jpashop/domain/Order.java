@@ -7,7 +7,7 @@ import java.util.List;
 
 @Entity
 @Table(name = "ORDERS") //DB 종류 중에 ORDER가 예약어로 걸려있는 DB가 있어서.
-public class Order {
+public class Order extends BaseEntity {
     @Id @GeneratedValue
     @Column(name = "ORDER_ID")
     private Long id;
