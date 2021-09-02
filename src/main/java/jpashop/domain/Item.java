@@ -9,7 +9,7 @@ import java.util.List;
 
 public class Item {
     @Id @GeneratedValue
-    @Column(name = "ITEM_ID") //DB는 언더바, JAVA는 카멜케이스
+    @Column(name = "ITEM_ID") //표기법_DB는 언더바, JAVA는 카멜케이스
     private Long id;
 
     private String name;
