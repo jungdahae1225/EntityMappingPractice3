@@ -15,15 +15,15 @@ public class Order extends BaseEntity {
     //@Column(name = "MEMBER_ID") //객체 지향적이지는 않다,, 관계형 객체 설계를 테이블 설계에 맞춘 방식.
     //private Long memberId;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="MEMBER_ID")
     private Member_forteam member;
 
-    @OneToOne //일대일 매핑
+    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL) //일대일 매핑
     @JoinColumn(name = "DELIVERY_ID")
     private Delivery delivery;
 
-    @OneToMany(mappedBy = "order")
+    @OneToMany(mappedBy = "order", cascade = CascadeType.ALL)
     private List<OrderItem> orderItems = new ArrayList<>();
 
     private LocalDateTime orderDate;

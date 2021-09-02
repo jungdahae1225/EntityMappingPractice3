@@ -34,7 +34,7 @@ public class JpaMain {
             //문제가 발생 하면 catch문에서 예외처리로 트랜젝션 롤백해주기.
             transaction.rollback();
         }finally {
-            //다 쓰면 닫아줘야 함.
+            //영속성 컨텍스트는 다 쓰면 닫아줘야 함.
             entityManager.close();
         }
         //전체가 끝나면 다 쓰면 entityManagerFactory 닫아줘야 함.

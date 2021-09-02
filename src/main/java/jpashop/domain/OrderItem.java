@@ -12,14 +12,14 @@ public class OrderItem extends BaseEntity {
     //@Column(name = "ORDER_ID")
     //private Long orderId;
 
-    @ManyToOne //현재 OrderItem테이블과 Order테이블은 다대일관계 -> 추후 Order테이블에서 반대로 OrderItem테이블을 참고하는게 비지니스적으로 필요성이 있다고 판단되어 양방향으로 만들거임
+    @ManyToOne(fetch = FetchType.LAZY) //현재 OrderItem테이블과 Order테이블은 다대일관계 -> 추후 Order테이블에서 반대로 OrderItem테이블을 참고하는게 비지니스적으로 필요성이 있다고 판단되어 양방향으로 만들거임
     @JoinColumn(name = "ORDER_ID")
     private Order order;
 
     //@Column(name = "ITEM_ID")
     //private Long itemId;
 
-    @ManyToOne//현재 OrderItem테이블과 Item테이블은 다대일관계
+    @ManyToOne(fetch = FetchType.LAZY)//현재 OrderItem테이블과 Item테이블은 다대일관계
     @JoinColumn(name = "ITEM_ID")
     private Item item;
 
